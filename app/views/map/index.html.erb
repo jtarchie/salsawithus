@@ -1,0 +1,22 @@
+<div id="map_body">
+	<div id="content">
+		<div id="map_canvas">
+		</div>
+	</div>
+	<div id="sidebar">
+		Address: 
+		<input type="text" name="address" id="address" onkeypress="Event.extend(event); if(event.keyCode == 13) {update_map_with_address($('address').value);}">
+		<input type="submit" value="go" onclick="update_map_with_address($('address').value); return false;">
+		<div class="fb-login-button">
+			<fb:login-button autologoutlink="true" size="large" length="long"></fb:login-button>
+		</div>
+		<ul id="list_venues">
+			<li id="title">List of venues: (<span class="list_venue_count">0</span>)</li>
+		</ul>
+	</div>
+</div>
+<div id="map_footer">
+	<a href="#" onclick="addVenuePopup();" class="requirelogin">Add Venue</a> |
+	<a href="http://www.facebook.com/pages/salsawithus/63078723193">Facebook</a> 
+	&copy;2009 salsawith.us
+</div>

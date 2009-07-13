@@ -1,0 +1,39 @@
+<div class="show_event">
+	<div id="information">
+		<h1><%= @venue.name%></h1>
+		<p>
+			options:
+			<%= link_to_function "edit", "editVenue(#{@venue.id});", :class=>'requirelogin'%> |
+			<span class="set_flagged"><%=link_to_remote "flag", {:url=>{:action=>:flag, :id=>@venue.id}}, {:class=>'requirelogin'}%></span> | 
+			<span class="set_favorited"><%=link_to_remote "favorite", {:url=>{:action=>:favorite, :id=>@venue.id}}, {:class=>'requirelogin'}%></span>
+		</p>
+		<% unless @venue.url.blank?%>
+		<div class="field">
+			<span class="title">url:</span>
+			<%= link_to truncate(@venue.url, 55, "..."), @venue.url %>
+		</div>
+		<%end%>
+		<% unless @venue.address.blank?%>
+		<div class="field">
+			<span class="title">address:</span>
+			<%= link_to @venue.address, "http://maps.google.com/maps?saddr=#{u(@venue.address)}", {:target=>'_blank'} %>
+		</div>
+		<%end%>
+		<% unless @venue.phone_number.blank? %>
+		<div class="field">
+			<span class="title">phone number:</span>
+			<%= h @venue.phone_number %>
+		</div>
+		<% end %>
+		<% unless @venue.description.blank? %>
+		<div class="field">
+			<span class="title">description:</span>
+			<%= simple_format(auto_link(@venue.description))%>
+		</div>
+		<% end %>
+	</div>
+	<div id="comments">
+		<h2>Comments</h2>
+		<fb:comments uid="venue<%=@venue.id%>" numposts="3" width="425"></fb:comments>
+	</div>
+</div>

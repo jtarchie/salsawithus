@@ -1,0 +1,47 @@
+<div id="event_form">
+	<%#= error_messages_for 'event'%>
+	<p>The fields bolded are required.</p>
+	<% remote_form_for(@event) do |f|%>
+		<%= f.hidden_field :venue_id%>
+		<div>
+			<%= f.label :name, nil, :class=>'required'%>
+			<%= f.text_field :name%>
+			<%= f.error_message_on :name, :prepend_text=>"Name "%>
+		</div>
+		<div>
+			<%= f.label :description, nil, :class=>'required'%>
+			<%= f.text_area :description, :style=>'height: 10em'%>
+			<%= f.error_message_on :description, :prepend_text=>"Description "%>
+		</div>
+		<div>
+			<%= f.label :url%>
+			<%= f.text_field :url%>
+			<%= f.error_message_on :url, :prepend_text=>"URL "%>
+		</div>
+		<div>
+			<%= f.label :minimum_age, "Min Age"%>
+			<%= f.select :minimum_age, (0..99).collect{|i| [i,i]}, {:include_blank=>true}%>
+			<%= f.error_message_on :minimum_age, :prepend_text=>"Minimum Age "%>
+		</div>
+		<div>
+			<%= f.label :date_start, "Start Time"%>
+			<span class="datetime_selection"><%= f.calendar_date_select :date_start, :class=>'datetime', :time=>true%></span>
+			<%= f.error_message_on :date_start, :prepend_text=>"Start Time "%>
+		</div>
+		<div>
+			<%= f.label :date_end, "End Time"%>
+			<span class="datetime_selection"><%= f.calendar_date_select :date_end, :class=>'datetime', :time=>true%></span>
+			<%= f.error_message_on :date_end, :prepend_text=>"End Time "%>
+		</div>
+		<div>
+			<%= f.label :event_type, "Type"%>
+			<%= f.select :event_type, Event.event_types, :include_blank=>true%>
+			<%= f.error_message_on :event_type, :prepend_text=>"Type "%>
+		</div>
+		<div class="buttons">
+			<%=submit_tag%> or <a href="#" onclick="myLightWindow.deactivate(); return false;">Cancel</a>
+		</div>
+	</form>
+	<p><strong>NOTE:</strong> Every event will be verified by the moderators before it is officially added to the salsawith.us</p>
+	<% end %>
+</div>

@@ -1,0 +1,65 @@
+<%
+	#show this month 
+	date ||= Time.now
+	#give me a list of events
+	events ||= []
+	#the size of the calendar
+	size ||= :small
+	
+	#give the day names based on the size of the calendar
+	day_names = {
+		:small => ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+		:medium => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		:large => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+	}
+	
+	#set some defaults
+	first_week = date.beginning_of_month
+	last_week = date.end_of_month
+	prev_month = date.last_month
+	next_month = date.next_month
+%>
+<table class="calendar <%="calendar_#{size}"%>">
+	<thead>
+		<tr>
+			<th>&lt;</th>
+			<th colspan="5"><%=h(date.strftime("%b %Y"))%></th>
+			<th>&gt;</th>
+		</tr>
+		<tr>
+			<% day_names[size].each do |day_name|%><th><%=h(day_name)%></th><%end%>
+		</tr>
+	</thead>
+	<tbody>
+		<% current_day = first_week.beginning_of_week
+		   begin
+		%>
+			<tr>
+				<% (1..7).each do |count|
+					current_day = current_day + 1.day
+				%>
+					<td>
+						<% if current_day.month == date.month
+							today_events = events.select{|e| e.date_start.same_day?(current_day)}
+						%>
+						
+						<span class="day"><%=current_day.day%></span>
+							<% if size == :small%>
+								<% if today_events.length > 0%>
+									<%= today_events.length%>
+									<%#= pluralize(today_events.length, "event")%>
+								<% end %>
+							<% else%>
+								<ul>
+									<% today_events.each do |event|%>
+										<li><%=event.name%></li>
+									<% end%>
+								</ul>
+							<% end %>
+						<% end%>
+					</td>
+				<%end%>
+			</tr>
+		<% end while current_day < last_week%>
+	</tbody>
+</table>

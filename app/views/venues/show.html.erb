@@ -1,0 +1,44 @@
+<div class="show_venue">
+	<div id="information">
+		<h1><%=h @venue.name%></h1>
+		<p>
+			options:
+			<%= link_to_function "edit", "editVenue(#{@venue.id});", :class=>'requirelogin'%> |
+			<span class="set_flagged"><%=link_to_remote "flag", {:url=>{:action=>:flag, :id=>@venue.id}}, {:class=>'requirelogin'}%></span> | 
+			<span class="set_favorited"><%=link_to_remote "favorite", {:url=>{:action=>:favorite, :id=>@venue.id}}, {:class=>'requirelogin'}%></span> | 
+			<%= link_to_function "event", "addEventPopup(#{@venue.id})", :class=>'requirelogin'%><%#= "(#{@venue.events.count})"%>
+		</p>
+		<% unless @venue.url.blank?%>
+		<div class="field">
+			<span class="title">url:</span>
+			<%= link_to truncate(@venue.url, :length=>55, :omission=>"..."), @venue.url %>
+		</div>
+		<%end%>
+		<% unless @venue.address.blank?%>
+		<div class="field">
+			<span class="title">address:</span>
+			<%= link_to @venue.address, "http://maps.google.com/maps?saddr=#{u(@venue.address)}", {:target=>'_blank'} %>
+		</div>
+		<%end%>
+		<% unless @venue.phone_number.blank? %>
+		<div class="field">
+			<span class="title">phone number:</span>
+			<%= h @venue.phone_number %>
+		</div>
+		<% end %>
+		<% unless @venue.description.blank? %>
+		<div class="field">
+			<span class="title">description:</span>
+			<%= simple_format(auto_link(@venue.description))%>
+		</div>
+		<% end %>
+		<div class="field">
+			<span class="title">monthly calendar:</span>
+			<%= render(:partial=>'events/calendar/monthly_table', :locals=>{:events=>@venue.events})%>
+		</div>
+	</div>
+	<div id="comments">
+		<h2>Comments</h2>
+		<fb:comments uid="venue<%=@venue.id%>" numposts="3" width="425"></fb:comments>
+	</div>
+</div>

@@ -1,0 +1,8 @@
+unless @event.errors.empty?
+  page.replace 'event_form', :partial=>'form'
+else
+  #replace with a feed form popup
+  page.replace 'edit_event_form', :partial=>'success'
+  fb_user_action_js(page, @user_action) if @user_action
+  fb_notification_js(page, @event.user.facebook_id, @user_notification.fbml) if @user_notification
+end

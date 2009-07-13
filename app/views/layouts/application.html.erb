@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+	<head>
+		<title>salsawith.us</title>
+		<script type="text/javascript" src="http://www.google.com/jsapi?key=<%=Geokit::Geocoders::google%>"></script>
+		<script language="Javascript" type="text/javascript">
+			google.load("prototype", "1.6.0.2");
+			google.load("scriptaculous", "1.8.1");
+			google.load("maps", "2");
+		</script>
+		<%= javascript_include_tag "application", "lightwindow", "elabel", calendar_date_select_javascripts(), :cache => true%>
+		<%= stylesheet_link_tag "application", "lightwindow", calendar_date_select_stylesheets(), :cache => true%>
+	</head>
+	<body>
+		<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+		<%=yield%>
+		<script type="text/javascript">
+			FB.init("<%=Facebooker.api_key%>", "/xd_receiver.html");
+		</script>
+		<script type="text/javascript">
+			var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+			document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+		<script type="text/javascript">
+			try {
+			var pageTracker = _gat._getTracker("<%=UA_TRACK_CODE%>");
+			pageTracker._trackPageview();
+			} catch(err) {}
+		</script>
+		<script>
+			//for(var i in FB.Facebook.apiClient) {console.log(i);}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+unless @venue.errors.empty?
+  page.replace 'venue_form', :partial=>'form'
+else
+  #replace with a feed form popup
+  page.replace 'new_venue_form', :partial=>'success'
+  fb_user_action_js(page, @user_action) if @user_action
+end

@@ -1,0 +1,3 @@
+page.select('.set_flagged').each do |value|
+  value.innerHTML  = 'flagged!'
+end

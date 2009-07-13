@@ -1,0 +1,163 @@
+html, body{
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
+	text-align: left;
+}
+.fb-login-button {
+	text-align:center;
+	margin: 3px 0;
+}
+form label {
+	width: 60px;
+	margin-right: 10px;
+	text-align: left;
+	padding-top: 0.5em;
+	float: left;
+	line-height: 1em;
+}
+form input{
+	line-height: 1em;
+	vertical-align: baseline;
+}
+form input[type="text"], form textarea {
+	width: 200px;
+	margin-bottom: 2px;
+}
+form .formError {
+	font-style: italic;
+	margin: 0 0 3px 0;
+	text-align: right;
+	color: #ff0000;
+}
+form .buttons {
+	text-align: right;
+}
+form .validation-advice {
+	
+}
+input.datetime {
+	width: 180px !important;
+}
+.map_point span {
+	display:block;
+}
+.required {
+	font-weight: bold;
+}
+.hide {
+	display: none;
+}
+.show_venue #information{
+	float:left;
+	width:350px;
+}
+.show_venue #comments {
+	float: left;
+	width: 440px;
+}
+.show_venue .field {
+	margin-bottom: 5px;
+}
+.show_venue .field .title {
+	display: block;
+	font-weight: bold;
+}
+ul#list_venues {
+	width: 200px;
+	max-height: 300px;
+	overflow: auto;
+	margin: 3px auto 3px auto;
+	padding:0;
+	color: #333333;
+	list-style-type:none;
+	padding-bottom: 3px;
+}
+ul#list_venues #title {
+	width: 150px;
+	border-bottom: 1px solid #D6D9DE;
+	font-weight: bold;
+}
+ul#list_venues li a{
+	padding: 2px 1px;
+	text-align: center;
+	width: 148px;
+	border-bottom: 1px solid #D6D9DE;
+	text-decoration: none;
+	display: block;
+}
+ul#list_venues li a:hover{
+	background-color: #ECEEF4;
+}
+ul#list_venues li a:active, ul#list_venues li a:focus{
+	color: #333333;
+}
+ul#list_venues .list_venue_count {
+	font-weight: bold;
+}
+#map_body{
+	position: relative;
+}
+#map_body #content{
+}
+#map_body #map_canvas {
+	height: 100%;
+	width: 100%;
+}
+#map_body #sidebar{
+	z-index:1;
+	position:absolute;
+	top:0;;
+	right:0;
+	padding:4px;
+	background-color:#fff;
+	border-left: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+#map_footer{
+	text-align: right;
+	z-index:1;
+	position:absolute;
+	bottom:0;
+	left:0;
+	right:0;
+	padding:4px;
+	background-color:#fff;
+	border-top: 1px solid #000;
+}
+#venue_title {
+	position:absolute;
+	padding:10px;
+	background:#555;
+	color:#fff;
+	width:75px;
+}
+.map_label_style {
+	padding: 2px;
+	border: 1px solid #fff;
+	background-color: #000;
+	color: #fff;
+	width: 125px;
+	margin-left: -62px;
+	text-align: center;
+}
+.calendar{
+	width: 100%;
+	font-size: 11px;
+}
+.calendar thead tr {
+	border-bottom: 1px solid #000;
+}
+.calendar thead th {
+	width: 14%;
+}
+.calendar tbody td {
+	text-align: right;
+	vertical-align: top;
+}
+.calendar .day {
+	display: block;
+}

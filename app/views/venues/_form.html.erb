@@ -1,0 +1,43 @@
+<div id="venue_form">
+	<%#= error_messages_for 'venue'%>
+	<p>The fields bolded are required.</p>
+	<% remote_form_for(@venue) do |f|%>
+		<div>
+			<%= f.label :name, nil, :class=>'required'%>
+			<%= f.text_field :name%>
+			<%= f.error_message_on :name, :prepend_text=>"Name "%>
+		</div>
+		<div>
+			<%= f.label :address, nil, :class=>'required'%>
+			<%= f.text_field :address, :onblur=>"formal_address(this.value, function(fields) {$('venue_address').value=fields.address;$('venue_lat').value=fields.lat;$('venue_lng').value=fields.lng;})"%>
+			<%= f.error_message_on :address, :prepend_text=>"Address "%>
+		</div>
+		<div>
+			<%= f.label :url%>
+			<%= f.text_field :url%>
+			<%= f.error_message_on :url, :prepend_text=>"URL "%>
+		</div>
+		<div>
+			<%= f.label :phone_number, "Phone"%>
+			<%= f.text_field :phone_number%>
+			<%= f.error_message_on :phone_number, :prepend_text=>"Phone "%>
+		</div>
+		<div>
+			<%= f.label :description%>
+			<%= f.text_area :description, :style=>'height: 10em'%>
+			<%= f.error_message_on :description, :prepend_text=>"Description "%>
+		</div>
+		<div>
+			<%= f.label :venue_type, "Type"%>
+			<%= f.select :venue_type, Venue.venue_types, :include_blank=>true%>
+			<%= f.error_message_on :venue_type, :prepend_text=>"Type "%>
+		</div>
+		<%= f.hidden_field :lat%>
+		<%= f.hidden_field :lng%>
+		<div class="buttons">
+			<%=submit_tag%> or <a href="#" onclick="myLightWindow.deactivate(); return false;">Cancel</a>
+		</div>
+	</form>
+	<p><strong>NOTE:</strong> Every venue will be verified by the moderators before it is officially added to the salsawith.us</p>
+	<% end %>
+</div>

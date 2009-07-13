@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+
+jts_favortie:
+    item: jts_house (Venue)
+    user: jtarchie
+    value: <%=Report::STAR%>
+
+jts_flag:
+    item: jts_house (Venue)
+    user: jtarchie
+    value: <%=Report::FLAG%>
