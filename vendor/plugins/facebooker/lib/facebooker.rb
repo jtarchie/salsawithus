@@ -28,9 +28,11 @@ module Facebooker
     def load_configuration(facebooker_yaml_file)
       if File.exist?(facebooker_yaml_file)
         if defined? RAILS_ENV
-          facebooker = YAML.load_file(facebooker_yaml_file)[RAILS_ENV] 
+          #facebooker = YAML.load_file(facebooker_yaml_file)[RAILS_ENV]
+          facebooker = YAML::load(ERB.new(IO.read(facebooker_yaml_file)).result)[RAILS_ENV]
         else
-          facebooker = YAML.load_file(facebooker_yaml_file)           
+          #facebooker = YAML.load_file(facebooker_yaml_file)
+          facebooker = YAML::load(ERB.new(IO.read(facebooker_yaml_file)).result)
         end
         ENV['FACEBOOK_API_KEY'] = facebooker['api_key']
         ENV['FACEBOOK_SECRET_KEY'] = facebooker['secret_key']
