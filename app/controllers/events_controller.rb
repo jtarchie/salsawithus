@@ -3,8 +3,8 @@ class EventsController < ApplicationController
   before_filter :create_user
   before_filter :require_user, :only=>[:create, :update, :edit]
   
-  caches_page :show, :new
-  cache_sweeper :event_sweeper, :only=>[:update]
+  #caches_page :show, :new
+  #cache_sweeper :event_sweeper, :only=>[:update]
   layout "application", :only=>[:show, :edit]
   
   def show

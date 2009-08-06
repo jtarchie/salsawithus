@@ -1,5 +1,5 @@
 class MapController < ApplicationController
-  caches_page :index
+  #caches_page :index
 
   layout "application"
 

@@ -3,8 +3,8 @@ class VenuesController < ApplicationController
   before_filter :create_user
   before_filter :require_user, :only=>[:create, :update, :flag, :favorite, :edit]
   
-  caches_page :show, :new
-  cache_sweeper :venue_sweeper, :only=>[:update]
+  #caches_page :show, :new
+  #cache_sweeper :venue_sweeper, :only=>[:update]
   layout "application", :only=>[:show, :edit]
   
   def show

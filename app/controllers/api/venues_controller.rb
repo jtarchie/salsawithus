@@ -1,8 +1,8 @@
 class Api::VenuesController < ApplicationController
   before_filter :set_facebook_session, :except=>[:index, :show]
   
-  caches_page :show
-  cache_sweeper :venue_sweeper, :only=>[:update]
+  #caches_page :show
+  #cache_sweeper :venue_sweeper, :only=>[:update]
   
   # GET /venues
   # GET /venues.json
