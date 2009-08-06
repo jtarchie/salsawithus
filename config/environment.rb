@@ -21,7 +21,7 @@ Rails::Initializer.run do |config|
   #config.gem "nkallen-cache-money", :lib=>'cache_money', :source=>"git://github.com/nkallen/cache-money.git"
   #config.gem "erubis"
   config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
-  config.gem "aws-s3", :lib => "aws/s3"
+  #config.gem "aws-s3", :lib => "aws/s3"
   config.gem "calendar_date_select"
   #config.gem "curb"
   
