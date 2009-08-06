@@ -1,0 +1,5 @@
+geokit
+will_paginate
+thoughtbot-shoulda --source http://gems.github.com
+aws-s3
+calendar_date_select
